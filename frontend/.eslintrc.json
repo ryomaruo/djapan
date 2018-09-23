@@ -1,0 +1,74 @@
+{
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2017,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "plugins": [
+    "riot"
+  ],
+ 
+ 
+  "rules": {
+    "eqeqeq": [0, "always"],
+    "array-bracket-spacing": [0, "always", {}],
+    "no-underscore-dangle": 0,
+    "camelcase": [0, {"properties": "never"}],
+    "new-parens": 0,
+    "semi": [0, "always"],
+    "comma-dangle": [2, "always-multiline"],
+    "no-cond-assign": [2, "except-parens"],
+    "no-dupe-args": 2,
+    "no-dupe-keys": 2,
+    "no-duplicate-case": 2,
+    "no-empty-character-class": 2,
+    "no-ex-assign": 2,
+    "no-extra-semi": 2,
+    "no-invalid-regexp": 2,
+    "no-negated-in-lhs": 2,
+    "no-obj-calls": 2,
+    "use-isnan": 2,
+    "no-unexpected-multiline": 2,
+    "curly": [2, "all"],
+    "default-case": 2,
+    "no-caller": 2,
+    "no-else-return": 2,
+    "no-eval": 2,
+    "no-fallthrough": 2,
+    "no-octal-escape": 2,
+    "no-octal": 2,
+    "no-proto": 2,
+    "no-redeclare": 2,
+    "no-with": 2,
+    "yoda": [2, "never", {"exceptRange": true}],
+    "brace-style": [2, "1tbs", {}],
+                                   
+                                   
+                                   
+    "comma-spacing": [2, {"after": true}],
+    "indent": [2, 2],
+    "keyword-spacing": 2,
+    "no-mixed-spaces-and-tabs": [2, "smart-tabs"],
+    "no-trailing-spaces": [2, {"skipBlankLines": false}],
+    "padded-blocks": [2, "never"],
+    "semi-spacing": [2, {"after": true}],
+    "space-infix-ops": 2,
+    "space-unary-ops": [2, {"words": true, "nonwords": false}],
+    "arrow-spacing": [2, {"before": true, "after": true}],
+    "constructor-super": 2,
+    "no-class-assign": 2,
+    "no-const-assign": 2,
+    "space-in-parens": [1, "never"],
+    "computed-property-spacing": [1, "never"],
+    "no-this-before-super": 1,
+    "no-var": 1,
+    "prefer-const": 1,
+    "prefer-spread": 1
+  }
+}

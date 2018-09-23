@@ -1,0 +1,66 @@
+version: '3'
+services:
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    ports:
+      - 8080:8080
+    expose:
+      - "8080"
+    volumes:
+      - ./nginx/conf/conf.d:/etc/nginx/conf.d
+      - ./frontend/dist:/usr/share/nginx/html
+    depends_on:
+      - backend
+    tty: true
+
+  backend: &app_base
+    build: ./backend
+    container_name: backend
+    command: bin/rails s -b "0.0.0.0"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/usr/src/djapan
+      - bundle_dir:/usr/local/bundle
+    depends_on:
+      - db
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    tty: true
+
+  spring:
+    <<: *app_base
+    container_name: spring
+    command: spring server
+    ports: []
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    command: yarn watch
+    volumes:
+      - ./frontend:/usr/src/app
+    depends_on:
+      - backend
+    tty: true
+
+  db:
+    image: mysql:5.7.10
+    container_name: mysql
+    environment:
+     MYSQL_DATABASE: ${MYSQL_DATABASE}
+     MYSQL_USER: ${MYSQL_USER}
+     MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    tty: true
+
+volumes:
+  mysql-data:
+  bundle_dir:
+    driver: local
